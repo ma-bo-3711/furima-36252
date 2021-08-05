@@ -2,62 +2,66 @@
 
 | Column               | Type       | Options        |
 | -------------------- | ---------- | ---------------|
-| email                | string     | null: false    |
+| name                 | string     | null: false    |
+| email                | string     | unique:true    |
 | encrypted_password   | string     | null: false    |
-| name                 | string     | null: false    | 
-| profile              | text       |                |
+| first_name           | string     | null: false    |
+| last_name            | string     | null: false    |
+| first_kana           | string     | null: false    |
+| last_kana            | string     | null: false    |
+| year_id              | integer    | null: false    |
+| month_id             | integer    | null: false    |
+| day_id               | integer    | null: false    |
 
 ## Association
 -has_many :items
--has_many :address
--has_many :purchase
+-has_many :purchases
 
 ## itemsテーブル
 
-| Column     | Type          | Options        |
-| ---------- | ------------- | ---------------|
-| image      | ActiveStorage | null: false    |
-| text       | text          | null: false    |
-| category   | string        | null: false    |
-| status     | string        | null: false    |
-| charge     | string        | null: false    |
-| area       | string        | null: false    |
-| indication | string        | null: false    |
-| user_id    | references    |                |
+| Column        | Type          | Options        |
+| ------------- | ------------- | ---------------|
+| name          | string        | null:false     |
+| text          | text          | null: false    |
+| category_id   | integer       | null: false    | 
+| status_id     | integer       | null: false    | 
+| charge_id     | integer       | null: false    | 
+| area_id       | integer       | null: false    | 
+| indication_id | integer       | null: false    | 
+| price         | string        | null:false     |
+| user          | references    |                |
 
 ## Association
 -belong_to :users
--has_one :purchase
+-has_one :purchases
 
 
-## purchaseテーブル
-| Column     | Type          | Options        |
-| ---------- | ------------- | ---------------|
-| number     | string        | null: false    |
-| limit      | string        | null: false    |
-| code       | string        | null: false    |
-| user_id    | references    |                |
-| item_id    | references    |                |
-
-
-## Association
--has_one :address
--has_one :items
-
-
-## addressテーブル
-
-| Column     | Type          | Options        |
-| ---------- | ------------- | ---------------|
-| deli_num   | string        | null: false    |
-| prefecture | string        | null: false    |
-| ward       | string        | null: false    |
-| block      | string        | null: false    |
-| room       | string        |                |
-| phone      | string        | null: false    |
-| user_id    | references    |                |
+## purchasesテーブル
+| Column     | Type          | Options           |
+| ---------- | ------------- | ----------------- |
+| number     | string        | null: false       |
+| limit      | string        | null: false       |
+| code       | string        | null: false       |
+| user       | references    | foreign_key: true |
+| item       | references    | foreign_key: true |
 
 
 ## Association
--belong_to :users
--has_one :purchase
+-has_one :addresses
+
+
+## addressesテーブル
+
+| Column      | Type          | Options           |
+| ----------- | ------------- | ----------------- |
+| deli_num    | string        | null: false       |
+| area_id     | integer       | null: false       | 
+| ward        | string        | null: false       |
+| block       | string        | null: false       |
+| room        | string        |                   |
+| phone       | string        | null: false       |
+| user        | references    | foreign_key: true |
+
+
+## Association
+-belong_to :purchases
