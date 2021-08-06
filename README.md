@@ -9,13 +9,11 @@
 | last_name            | string     | null: false                 |
 | first_kana           | string     | null: false                 |
 | last_kana            | string     | null: false                 |
-| year_id              | date       | null: false                 |
-| month_id             | date       | null: false                 |
-| day_id               | date       | null: false                 |
+| birth_id             | date       | null: false                 |
 
 ## Association
 -has_many :items
--has_one :purchases
+-has_many :purchases
 
 ## itemsテーブル
 
@@ -55,11 +53,7 @@
 | ----------- | ------------- | ----------------- |
 | deli_num    | string        | null: false       |
 | area_id     | integer       | null: false       | 
-| ward        | string        | null: false       |
-| block       | string        | null: false       |
-| room        | string        |                   |
-| phone       | string        | null: false       |
-| user        | references    | foreign_key: true |
+| purchase    | references    | foreign_key: true |
 
 
 ## Association
