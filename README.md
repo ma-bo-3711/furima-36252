@@ -9,7 +9,7 @@
 | last_name            | string     | null: false                 |
 | first_kana           | string     | null: false                 |
 | last_kana            | string     | null: false                 |
-| birth_id             | date       | null: false                 |
+| birth                | date       | null: false                 |
 
 ## Association
 -has_many :items
@@ -31,7 +31,7 @@
 
 ## Association
 -belong_to :user
--has_one :purchases
+-has_one :purchase
 
 
 ## purchasesテーブル
@@ -44,7 +44,7 @@
 ## Association
 -belongs_to :user
 -belongs_to :item
--has_one :addresses
+-has_one :address
 
 
 ## addressesテーブル
@@ -52,7 +52,10 @@
 | Column      | Type          | Options           |
 | ----------- | ------------- | ----------------- |
 | deli_num    | string        | null: false       |
-| area_id     | integer       | null: false       | 
+| area_id     | integer       | null: false       |
+| block       | string        | null: false       |
+| room        | string        |                   |
+| phone       | string        | null: false       | 
 | purchase    | references    | foreign_key: true |
 
 
