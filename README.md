@@ -53,6 +53,7 @@
 | ----------- | ------------- | ----------------- |
 | deli_num    | string        | null: false       |
 | area_id     | integer       | null: false       |
+| ward        | string        | null: false       |
 | block       | string        | null: false       |
 | room        | string        |                   |
 | phone       | string        | null: false       | 
