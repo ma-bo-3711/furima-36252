@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :purchases
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :encrypted＿password, with: PASSWORD_REGEX
-
+  validates_format_of :password, with: PASSWORD_REGEX
+  
   validates :name,       presence: true
   
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/} do
