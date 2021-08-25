@@ -24,6 +24,16 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Token can't be blank")
     end
+    it "userが空では登録できないこと" do
+      @order_address.user_id = ''
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("User can't be blank")
+    end
+    it "itemが空では登録できないこと" do
+      @order_address.item_id = ''
+      @order_address.valid?
+      expect(@order_address.errors.full_messages).to include("Item can't be blank")
+    end
     it 'deli_numが空だと保存できないこと' do
       @order_address.deli_num = ''
       @order_address.valid?
@@ -34,8 +44,8 @@ RSpec.describe OrderAddress, type: :model do
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Deli num is invalid. Include hyphen(-)")
     end
-    it 'area_idを選択していないと保存できないこと' do
-      @order_address.area_id = ''
+    it 'area_idを1を選択していると保存できないこと' do
+      @order_address.area_id = 1
       @order_address.valid?
       expect(@order_address.errors.full_messages).to include("Area can't be blank")
     end
